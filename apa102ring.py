@@ -1,10 +1,9 @@
-import machine, neopixel
 from pixelring import PixelRing
 
-class WS2812Ring(PixelRing):
-	def __init__(self, neopixel_strand, offset, count):
+class APA102Ring(PixelRing):
+	def __init__(self, apa102, offset, count):
 		super.__init(offset, count)
-		self.neopixel_strand = neopixel_strand
+		self.apa102 = apa102
 
 	def set(self, position, color):
 		if(position < 0):
@@ -12,7 +11,7 @@ class WS2812Ring(PixelRing):
 
 		position = position % self.count
 
-		self.neopixel_strand[self.offset + position] = color
+		self.apa102[self.offset + position] = color
 
 	def get(self, position):
 		if(position < 0):
@@ -20,8 +19,8 @@ class WS2812Ring(PixelRing):
 
 		position = position % self.count
 
-		return self.neopixel_strand[self.offset + position]
+		return self.apa102[self.offset + position]
 
 	def write(self):
-		self.neopixel_strand.write()
-		self.neopixel_strand.write()
+		self.apa102.write()
+		self.apa102.write()
