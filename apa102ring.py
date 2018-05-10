@@ -2,7 +2,7 @@ from pixelring import PixelRing
 
 class APA102Ring(PixelRing):
 	def __init__(self, apa102, offset, count):
-		super.__init(offset, count)
+		super().__init__(offset, count)
 		self.apa102 = apa102
 
 	def set(self, position, color):

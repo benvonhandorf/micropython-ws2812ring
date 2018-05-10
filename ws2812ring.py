@@ -3,7 +3,7 @@ from pixelring import PixelRing
 
 class WS2812Ring(PixelRing):
 	def __init__(self, neopixel_strand, offset, count):
-		super.__init(offset, count)
+		super().__init__(offset, count)
 		self.neopixel_strand = neopixel_strand
 
 	def set(self, position, color):
