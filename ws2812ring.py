@@ -2,11 +2,13 @@ import machine, neopixel
 from pixelring import PixelRing
 
 class WS2812Ring(PixelRing):
-	def __init__(self, neopixel_strand, offset, count):
-		super().__init__(offset, count)
+	def __init__(self, neopixel_strand, offset, count, brightnessReduction):
+		super().__init__(offset, count, brightnessReduction)
 		self.neopixel_strand = neopixel_strand
 
 	def set(self, position, color):
+		color = self.reduceBrightness(color)
+		
 		if(position < 0):
 			position = position + self.count
 

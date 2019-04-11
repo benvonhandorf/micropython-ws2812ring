@@ -1,8 +1,17 @@
 
 class PixelRing:
-	def __init__(self, offset, count):
+	def __init__(self, offset, count, brightnessReduction):
 		self.offset = offset
 		self.count = count
+		self.brightnessReduction = brightnessReduction
+
+	def reduceBrightness(self, color):
+		color = (int(color[0]) >> self.brightnessReduction,
+			int(color[1]) >> self.brightnessReduction,
+			int(color[2]) >> self.brightnessReduction
+			)
+
+		return color
 
 	def fill(self, color):
 		for x in range(0, self.count):
